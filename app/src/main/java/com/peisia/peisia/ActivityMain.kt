@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 
-class MainActivity : AppCompatActivity() {
+class ActivityMain : AppCompatActivity() {
     var mAuth : FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
