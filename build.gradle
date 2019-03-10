@@ -1,0 +1,29 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.3.20'
+    repositories {
+        google()
+        jcenter()
+        
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+//        classpath 'com.google.gms:google-services:4.1.0'
+        classpath 'com.google.gms:google-services:4.2.0' // google-services plugin  // 공홈 최근꺼 보고 함
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()   // 여기아래에 메이븐 뭐 넣을 필요도 없음. 파베 따라하기 책에 나온 수동법처럼 메이븐 어쩌고 할필요 없음.
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

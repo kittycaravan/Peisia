@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "933007721937",
+    "firebase_url": "https://peisia-95d19.firebaseio.com",
+    "project_id": "peisia-95d19",
+    "storage_bucket": "peisia-95d19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:933007721937:android:6f9eb470259477f0",
+        "android_client_info": {
+          "package_name": "com.peisia.peisia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "933007721937-6cnpdg6cgg7oq7a45kbf0frm50h3q9lm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.peisia.peisia",
+            "certificate_hash": "0bac90a6145fd7a7937178b35183221e54b456b7"
+          }
+        },
+        {
+          "client_id": "933007721937-utm6k41n8voca5lmua1qcep8iva295eu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPOckS1wH4ZgEfDI_SFv9i-ywviRM7CIw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "933007721937-utm6k41n8voca5lmua1qcep8iva295eu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
