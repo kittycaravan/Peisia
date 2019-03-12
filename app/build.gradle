@@ -37,5 +37,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:16.1.0'   // 얘가 최신
 
     implementation "org.jetbrains.anko:anko:$anko_version"  // anko 라이브러리 추가. 액티비티 전환을 쉽게 해줌.
+
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"    // 이거해야 tag 같은거 쓸수 있나봄.
 }
 apply plugin: 'com.google.gms.google-services'
