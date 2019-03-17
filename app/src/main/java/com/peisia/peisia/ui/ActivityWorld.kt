@@ -12,11 +12,19 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.peisia.peisia.R
+import com.peisia.peisia.data.Room
 import kotlinx.android.synthetic.main.activity_world.*
 import kotlin.concurrent.timer
 class ActivityWorld : AppCompatActivity() {
     private val TAG = this::class.simpleName // 태그 설정. 당분간 이걸로.
     var n = 0
+    var listRooms:List<Room> = listOf(
+        Room(1000,"튜토리얼 룸","튜토리얼 룸입니다.",mapOf("동" to 1001)),
+        Room(1001,"튜토리얼 룸","튜토리얼 룸입니다.",mapOf("동" to 1002, "서" to 1000)),
+        Room(1002,"튜토리얼 룸","튜토리얼 룸입니다.",mapOf("동" to 1003, "서" to 1001)),
+        Room(1003,"튜토리얼 룸","튜토리얼 룸입니다.",mapOf("동" to 1004, "서" to 1002))
+    )
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +66,8 @@ class ActivityWorld : AppCompatActivity() {
         topTV1.setPadding(20, 10, 10, 10)
         topTV1.setTextColor(Color.parseColor("#FF7200"))
         topTV1.textSize = 13f
-        topTV1.text = "야옹이"
+//        topTV1.text = "야옹이"
+        topTV1.text = listRooms[2].title
         world_scroll_ll.addView(topTV1)
     }
 
