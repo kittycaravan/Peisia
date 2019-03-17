@@ -6,6 +6,7 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.util.Log
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -37,6 +38,7 @@ class ActivityWorld : AppCompatActivity() {
 
         if(n % 3000 == 0 && n != 0){
             addText()
+            scrollToEnd()
             addText2()
         }
     }
@@ -56,7 +58,7 @@ class ActivityWorld : AppCompatActivity() {
         topTV1.setPadding(20, 10, 10, 10)
         topTV1.setTextColor(Color.parseColor("#FF7200"))
         topTV1.textSize = 13f
-        topTV1.text = "텍스트"
+        topTV1.text = "야옹이"
         world_scroll_ll.addView(topTV1)
     }
 
@@ -77,5 +79,11 @@ class ActivityWorld : AppCompatActivity() {
         /*변경된 값의 파라미터를 해당 레이아웃 파라미터 값에 셋팅*/
         topTV1.layoutParams = plControl
         world_display_obj_fl.addView(topTV1)
+    }
+
+    fun scrollToEnd(){
+//        runOnUiThread {
+            world_scroll.fullScroll(View.FOCUS_DOWN)
+//        }
     }
 }
