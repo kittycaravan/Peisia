@@ -16,6 +16,10 @@ import com.peisia.peisia.data.Room
 import kotlinx.android.synthetic.main.activity_world.*
 import kotlin.concurrent.timer
 
+import com.peisia.peisia.R
+
+
+
 
 class ActivityWorld : AppCompatActivity() {
     private val TAG = this::class.simpleName // 태그 설정. 당분간 이걸로.
@@ -68,8 +72,10 @@ class ActivityWorld : AppCompatActivity() {
         topTV1.setPadding(20, 10, 10, 10)
         topTV1.setTextColor(Color.parseColor("#FF7200"))
         topTV1.textSize = 13f
+
 //        topTV1.text = "야옹이"
-        topTV1.text = listRooms[2].title
+//        topTV1.text = listRooms[2].title
+        topTV1.text = String.format(resources.getString(R.string.format_world_room_title), listRooms[2].title)
         world_scroll_ll.addView(topTV1)
     }
 

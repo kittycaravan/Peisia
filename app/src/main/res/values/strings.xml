@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Peisia</string>
+
+    <!-- 내 스트링 -->
+    <string name="format_world_room_title">[ %s ]</string>
+
 </resources>
