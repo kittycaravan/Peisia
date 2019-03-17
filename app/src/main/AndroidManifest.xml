@@ -11,7 +11,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme.FullScreen">
-        <activity android:name=".ui.ActivityWorld">
+        <activity android:name=".ui.ActivityWorld" android:theme="@style/AppTheme.FullScreen.AllwaysKeyboard">
         </activity>
         <activity android:name=".ui.ActivityCharacterCreate">
         </activity>
