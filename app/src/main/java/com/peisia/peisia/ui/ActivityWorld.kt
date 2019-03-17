@@ -1,7 +1,8 @@
 package com.peisia.peisia.ui
 import android.graphics.Color
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.support.v7.app.AppCompatActivity
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
@@ -11,10 +12,11 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import com.peisia.peisia.R
 import com.peisia.peisia.data.Room
 import kotlinx.android.synthetic.main.activity_world.*
 import kotlin.concurrent.timer
+
+
 class ActivityWorld : AppCompatActivity() {
     private val TAG = this::class.simpleName // 태그 설정. 당분간 이걸로.
     var n = 0
@@ -28,7 +30,7 @@ class ActivityWorld : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_world)
+        setContentView(com.peisia.peisia.R.layout.activity_world)
 
         Toast.makeText(this, "헬로! 키티! 월드! 에 들어왔다!!!", Toast.LENGTH_SHORT).show()
         Log.v(TAG,"==== ==== $TAG 야옹")
@@ -91,8 +93,9 @@ class ActivityWorld : AppCompatActivity() {
     }
 
     fun scrollToEnd(){
-//        runOnUiThread {
+        Handler().postDelayed(Runnable {
+            //여기에 딜레이 후 시작할 작업들을 입력
             world_scroll.fullScroll(View.FOCUS_DOWN)
-//        }
+        }, 100) // n (ms)초 정도 딜레이를 준 후 시작
     }
 }
