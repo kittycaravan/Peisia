@@ -6,6 +6,8 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.util.Log
+import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.peisia.peisia.R
@@ -32,6 +34,11 @@ class ActivityWorld : AppCompatActivity() {
         spannable.setSpan(ForegroundColorSpan(Color.parseColor("#FF00FF")), 0, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         text2.setText(spannable, TextView.BufferType.SPANNABLE)
         n += 100
+
+        if(n % 3000 == 0 && n != 0){
+            addText()
+            addText2()
+        }
     }
 
     fun setWorldTimer() {
@@ -40,5 +47,35 @@ class ActivityWorld : AppCompatActivity() {
                 addTextColor()
             }
         }
+    }
+
+    fun addText(){
+        val topTV1 = TextView(this)
+        topTV1.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+        topTV1.setBackgroundColor(Color.parseColor("#00FFFFFF"))
+        topTV1.setPadding(20, 10, 10, 10)
+        topTV1.setTextColor(Color.parseColor("#FF7200"))
+        topTV1.textSize = 13f
+        topTV1.text = "텍스트"
+        world_scroll_ll.addView(topTV1)
+    }
+
+    fun addText2(){
+        val topTV1 = TextView(this)
+        topTV1.layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT)
+        topTV1.setBackgroundColor(Color.parseColor("#00FFFFFF"))
+        topTV1.setPadding(20, 10, 10, 10)
+        topTV1.setTextColor(Color.parseColor("#FF7200"))
+        topTV1.textSize = 13f
+        topTV1.text = "프레임에 텍스트"
+
+        val plControl = topTV1.layoutParams as FrameLayout.LayoutParams /*변경하고 싶은 레이아웃의 파라미터 값을 가져 옴*/
+        /*해당 margin값 변경*/
+        plControl.bottomMargin = 30
+        plControl.topMargin = 30
+        plControl.leftMargin = 30
+        /*변경된 값의 파라미터를 해당 레이아웃 파라미터 값에 셋팅*/
+        topTV1.layoutParams = plControl
+        world_display_obj_fl.addView(topTV1)
     }
 }
