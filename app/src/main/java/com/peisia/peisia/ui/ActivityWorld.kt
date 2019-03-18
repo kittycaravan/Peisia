@@ -10,7 +10,7 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.peisia.peisia.data.world.Room
+import com.peisia.peisia.data.world.thing.Room
 import kotlinx.android.synthetic.main.activity_world.*
 import kotlin.concurrent.timer
 
@@ -173,6 +173,7 @@ class ActivityWorld : AppCompatActivity() {
 
     fun displayRoom(roomId : Int){
         val stringRoomId = roomId.toString()
+//        addEditTextToScrollScreen(String.format(resources.getString(R.string.format_world_room_title), rooms[stringRoomId]?.name))
         addEditTextToScrollScreen(String.format(resources.getString(R.string.format_world_room_title), rooms[stringRoomId]?.name))
         addEditTextToScrollScreen(rooms[stringRoomId]?.desc)
     }
