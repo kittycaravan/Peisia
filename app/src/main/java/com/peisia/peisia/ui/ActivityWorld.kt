@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_world.*
 import kotlin.concurrent.timer
 
 import com.peisia.peisia.R
+import com.peisia.peisia.data.temp.TempDataMapHelpBeginer
 import com.peisia.peisia.util.UtilWorldTime
 
 class ActivityWorld : AppCompatActivity() {
@@ -22,39 +23,14 @@ class ActivityWorld : AppCompatActivity() {
     var worldTimeMs : Long = 0L
     var worldTimeSec : Long = 0L
     var worldCurrentRoom : Long = 7175500005000050000  //todo: 하드코딩. 첫 시작 위치.
-    val rooms:MutableMap<Long, Room> = mutableMapOf()
+    var worldMap:MutableMap<Long, Room> = mutableMapOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.peisia.peisia.R.layout.activity_world)
 
-        rooms.put(7175500005000050000 , Room(
-            7175500005000050000, "초보자 도움 방"
-            , "- 이동하는 방법 -"
-                    + "\n방 설명에 현재 방과 연결된 방으로 이동 가능한 방향이 표시됩니다."
-            , mutableMapOf("동" to 7175500005001050000)
-        )
-        )
-        rooms.put(7175500005001050000 , Room(
-            7175500005001050000, "초보자 도움 방"
-            , "- 대화하는 방법 -"
-                    + "\n\"안녕 말\" 이나 \"안녕 ㅁ\" 이라고 입력하시면 '<케릭터명>님이 말합니다. \"안녕\" ' 이라고 표시됩니다."
-            , mutableMapOf("서" to 7175500005000050000, "남" to 7175500005001050010)
-        )
-        )
-        rooms.put(7175500005001050010 , Room(
-            7175500005001050010, "초보자 도움 방"
-            , "- 내 상태를 확인 -"
-                    + "\n케릭터의 전반적인 상태를 확인하려면 \"상태\" 또는 \"상\" 이라고 입력합니다."
-            , mutableMapOf("서" to 7175500005000050010, "북" to 7175500005001050000)
-        )
-        )
-        rooms.put(7175500005000050010, Room(
-            7175500005000050010, "초보자 도움 방"
-            , "- 물건과의 상호작용 -"
-                    + "\n소지품을 확인하려면 \"소지품\" 또는 \"소\" 라고 입력하세요."
-            , mutableMapOf("동" to 7175500005001050010)
-        )
-        )
+        ////    초보자 도움 맵을 로딩
+        val tempDataMapHelpBeginer = TempDataMapHelpBeginer()
+        worldMap = tempDataMapHelpBeginer.getMap()
 
         setWorldTimer()
         ////    cmd 입력 버튼 눌렸을 때
@@ -150,7 +126,7 @@ class ActivityWorld : AppCompatActivity() {
 
     //// 이동 처리
     fun checkAvailIntoRoomExit(roomId : Long, cmdDirection : String) {
-        var availEnterRommNumber : Long = rooms[roomId]?.exits?.get(cmdDirection) ?: 0
+        var availEnterRommNumber : Long = worldMap[roomId]?.exits?.get(cmdDirection) ?: 0
         if(availEnterRommNumber != 0L){
             worldCurrentRoom = availEnterRommNumber // 방 이동 처리
             ////    새 방 정보 출력
@@ -173,8 +149,8 @@ class ActivityWorld : AppCompatActivity() {
 
     fun displayRoom(roomId : Long){
 //        val stringRoomId = roomId.toString()
-//        addEditTextToScrollScreen(String.format(resources.getString(R.string.format_world_room_title), rooms[stringRoomId]?.name))
-        addEditTextToScrollScreen(String.format(resources.getString(R.string.format_world_room_title), rooms[roomId]?.name))
-        addEditTextToScrollScreen(rooms[roomId]?.desc)
+//        addEditTextToScrollScreen(String.format(resources.getString(R.string.format_world_room_title), worldMap[stringRoomId]?.name))
+        addEditTextToScrollScreen(String.format(resources.getString(R.string.format_world_room_title), worldMap[roomId]?.name))
+        addEditTextToScrollScreen(worldMap[roomId]?.desc)
     }
 }
