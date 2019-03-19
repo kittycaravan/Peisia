@@ -7,7 +7,7 @@ import com.peisia.peisia.data.world.Thing
  */
 //data class Room(val id:Int, val name:String, val desc:String, val exits:MutableMap<String, Int>)
 //class Room(id : Long, name : String, val desc:String, val exits:MutableMap<String, Int>) : WorldObject(id, name){
-class Room(id : Long, name : String, val desc:String, val exits:MutableMap<String, Int>) : Thing(id, name){
+class Room(id : Long, name : String, val desc:String, val exits:MutableMap<String, Long>) : Thing(id, name){
 
 /*    override var name: String = ""
         get(){
