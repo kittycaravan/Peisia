@@ -21,38 +21,38 @@ class ActivityWorld : AppCompatActivity() {
     private val TAG = this::class.simpleName // 태그 설정. 당분간 이걸로.
     var worldTimeMs : Long = 0L
     var worldTimeSec : Long = 0L
-    var worldCurrentRoom : Long = 1000L  //todo: 하드코딩. 첫 시작 룸을 강제로 1000 번 방부터 시작.
+    var worldCurrentRoom : Long = 7175500005000050000  //todo: 하드코딩. 첫 시작 위치.
     val rooms:MutableMap<Long, Room> = mutableMapOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.peisia.peisia.R.layout.activity_world)
 
-        rooms.put(1000 , Room(
-            1000, "초보자 도움 방"
+        rooms.put(7175500005000050000 , Room(
+            7175500005000050000, "초보자 도움 방"
             , "- 이동하는 방법 -"
                     + "\n방 설명에 현재 방과 연결된 방으로 이동 가능한 방향이 표시됩니다."
-            , mutableMapOf("동" to 1001L)
+            , mutableMapOf("동" to 7175500005001050000)
         )
         )
-        rooms.put(1001 , Room(
-            1001, "초보자 도움 방"
+        rooms.put(7175500005001050000 , Room(
+            7175500005001050000, "초보자 도움 방"
             , "- 대화하는 방법 -"
                     + "\n\"안녕 말\" 이나 \"안녕 ㅁ\" 이라고 입력하시면 '<케릭터명>님이 말합니다. \"안녕\" ' 이라고 표시됩니다."
-            , mutableMapOf("서" to 1000L, "남" to 1002L)
+            , mutableMapOf("서" to 7175500005000050000, "남" to 7175500005001050010)
         )
         )
-        rooms.put(1002 , Room(
-            1002, "초보자 도움 방"
+        rooms.put(7175500005001050010 , Room(
+            7175500005001050010, "초보자 도움 방"
             , "- 내 상태를 확인 -"
                     + "\n케릭터의 전반적인 상태를 확인하려면 \"상태\" 또는 \"상\" 이라고 입력합니다."
-            , mutableMapOf("서" to 1003L, "북" to 1001L)
+            , mutableMapOf("서" to 7175500005000050010, "북" to 7175500005001050000)
         )
         )
-        rooms.put(1003, Room(
-            1003, "초보자 도움 방"
+        rooms.put(7175500005000050010, Room(
+            7175500005000050010, "초보자 도움 방"
             , "- 물건과의 상호작용 -"
                     + "\n소지품을 확인하려면 \"소지품\" 또는 \"소\" 라고 입력하세요."
-            , mutableMapOf("동" to 1002L)
+            , mutableMapOf("동" to 7175500005001050010)
         )
         )
 
