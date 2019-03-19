@@ -33,7 +33,7 @@ class TempDataMapHelpBeginer {
             7175500005000050010, "초보자 도움 방"
             , "- 물건과의 상호작용 -"
                     + "\n소지품을 확인하려면 \"소지품\" 또는 \"소\" 라고 입력하세요."
-            , mutableMapOf("동" to 7175500005001050010)
+            , mutableMapOf("동" to 7175500005001050010, "위" to 7175500105000050010)
         )
         )
         return tempRooms

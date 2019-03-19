@@ -16,6 +16,7 @@ import kotlin.concurrent.timer
 
 import com.peisia.peisia.R
 import com.peisia.peisia.data.temp.TempDataMapHelpBeginer
+import com.peisia.peisia.data.temp.TempDataMapPractice
 import com.peisia.peisia.util.UtilWorldTime
 
 class ActivityWorld : AppCompatActivity() {
@@ -28,10 +29,13 @@ class ActivityWorld : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(com.peisia.peisia.R.layout.activity_world)
 
-        ////    초보자 도움 맵을 로딩
+        ////    맵 로딩 - 초보자 도움
         val tempDataMapHelpBeginer = TempDataMapHelpBeginer()
 //        worldMap = tempDataMapHelpBeginer.getMap()
-        worldMap.putAll(tempDataMapHelpBeginer.getMap())    // 월드맵에 초보자 도움 맵 추가
+        worldMap.putAll(tempDataMapHelpBeginer.getMap())    // 월드맵에 맵 추가
+        ////    맵 로딩 - 연습장
+        val tempDataMapPractice = TempDataMapPractice()
+        worldMap.putAll(tempDataMapPractice.getMap())       // 월드맵에 맵 추가
 
         setWorldTimer()
         ////    cmd 입력 버튼 눌렸을 때
