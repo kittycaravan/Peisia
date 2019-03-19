@@ -31,7 +31,7 @@ class ActivityWorld : AppCompatActivity() {
         ////    초보자 도움 맵을 로딩
         val tempDataMapHelpBeginer = TempDataMapHelpBeginer()
 //        worldMap = tempDataMapHelpBeginer.getMap()
-        worldMap.putAll(tempDataMapHelpBeginer.getMap())
+        worldMap.putAll(tempDataMapHelpBeginer.getMap())    // 월드맵에 초보자 도움 맵 추가
 
         setWorldTimer()
         ////    cmd 입력 버튼 눌렸을 때
