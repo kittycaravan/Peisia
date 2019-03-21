@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
@@ -17,6 +18,8 @@ import kotlin.concurrent.timer
 import com.peisia.peisia.R
 import com.peisia.peisia.data.temp.TempDataMapHelpBeginer
 import com.peisia.peisia.data.temp.TempDataMapPractice
+import com.peisia.peisia.data.temp.TempDataObjects
+import com.peisia.peisia.data.world.WorldObject
 import com.peisia.peisia.util.UtilWorldTime
 
 class ActivityWorld : AppCompatActivity() {
@@ -25,6 +28,7 @@ class ActivityWorld : AppCompatActivity() {
     var worldTimeSec : Long = 0L
     var worldCurrentRoom : Long = 7175500005000050000  //todo: 하드코딩. 첫 시작 위치.
     var worldMap:MutableMap<Long, Room> = mutableMapOf()
+    var objsUse:MutableMap<Long, WorldObject> = mutableMapOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.peisia.peisia.R.layout.activity_world)
@@ -36,6 +40,10 @@ class ActivityWorld : AppCompatActivity() {
         ////    맵 로딩 - 연습장
         val tempDataMapPractice = TempDataMapPractice()
         worldMap.putAll(tempDataMapPractice.getMap())       // 월드맵에 맵 추가
+
+        ////    오브젝트 로딩 - 임시 오브젝트들
+        val tempDataObjects = TempDataObjects()
+        objsUse = tempDataObjects.getObjects()
 
         setWorldTimer()
         ////    cmd 입력 버튼 눌렸을 때
@@ -62,7 +70,7 @@ class ActivityWorld : AppCompatActivity() {
 
         if(worldTimeMs % 3000 == 0L && worldTimeMs != 0L){
             scrollToEnd()
-            addObjectToObjectScreen()
+            displayObjectsToObjectScreen()
         }
     }
 
@@ -91,23 +99,34 @@ class ActivityWorld : AppCompatActivity() {
     /**
      * 오브젝트 스크린에 오브젝트 표시
      */
-    fun addObjectToObjectScreen(){
-        val topTV1 = TextView(this)
-        topTV1.layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT)
-        topTV1.setBackgroundColor(Color.parseColor("#00FFFFFF"))
-        topTV1.setPadding(10, 0, 10, 0)
-        topTV1.setTextColor(Color.parseColor("#FF7200"))
-        topTV1.textSize = 10f
-        topTV1.text = "Kaminus"
+    fun displayObjectsToObjectScreen(){
+        world_display_obj_fl.removeAllViews()
+        var tempMargin = 30
+        for(obj in objsUse){
+            //todo
+            if(obj.value.id == worldCurrentRoom){
+                Log.v(TAG,"==== ==== obj.value.name : " + obj.value.name)
+                val topTV1 = TextView(this)
+                topTV1.layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT)
+                topTV1.setBackgroundColor(Color.parseColor("#00FFFFFF"))
+                topTV1.setPadding(10, 0, 10, 0)
+                topTV1.setTextColor(Color.parseColor("#FF7200"))
+                topTV1.textSize = 10f
+                topTV1.text = obj.value.name
 
-        val plControl = topTV1.layoutParams as FrameLayout.LayoutParams /*변경하고 싶은 레이아웃의 파라미터 값을 가져 옴*/
-        /*해당 margin값 변경*/
-        plControl.bottomMargin = 30
-        plControl.topMargin = 30
-        plControl.leftMargin = 30
-        /*변경된 값의 파라미터를 해당 레이아웃 파라미터 값에 셋팅*/
-        topTV1.layoutParams = plControl
-        world_display_obj_fl.addView(topTV1)
+                val plControl = topTV1.layoutParams as FrameLayout.LayoutParams /*변경하고 싶은 레이아웃의 파라미터 값을 가져 옴*/
+                /*해당 margin값 변경*/
+                plControl.bottomMargin = 30
+                plControl.topMargin = 30
+                plControl.leftMargin = tempMargin
+                tempMargin += 300
+                /*변경된 값의 파라미터를 해당 레이아웃 파라미터 값에 셋팅*/
+                topTV1.layoutParams = plControl
+                world_display_obj_fl.addView(topTV1)
+            }
+        }
+
+
     }
 
     fun scrollToEnd(){
@@ -157,5 +176,7 @@ class ActivityWorld : AppCompatActivity() {
 //        addEditTextToScrollScreen(String.format(resources.getString(R.string.format_world_room_title), worldMap[stringRoomId]?.name))
         addEditTextToScrollScreen(String.format(resources.getString(R.string.format_world_room_title), worldMap[roomId]?.name))
         addEditTextToScrollScreen(worldMap[roomId]?.desc)
+
+
     }
 }
