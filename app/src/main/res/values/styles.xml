@@ -8,10 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="AppTheme.FullScreen" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:windowFullscreen">true</item>
-        <item name="windowNoTitle">true</item>
+
     </style>
     <style name="AppTheme.FullScreen.AllwaysKeyboard" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">true</item>
         <item name="android:windowSoftInputMode">adjustNothing|stateAlwaysVisible</item><!-- 키보드 나올때 화면 고정, 앱시작시 키보드 보임 -->
     </style>
 
